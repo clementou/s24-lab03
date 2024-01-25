@@ -112,5 +112,27 @@ public class IntQueueTest {
         }
     }
 
+    @Test
+    public void testClear() {
+        for (int i = 0; i < testList.size(); i++) {
+            mQueue.enqueue(testList.get(i));
+        }
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+        assertNull(mQueue.peek());
+    }
+
+    @Test
+    public void testEnsureCapacity() {
+        for (int i = 0; i < TEST_INITIAL_SIZE; i++) {
+            mQueue.enqueue(i);
+        }
+        assertEquals(TEST_INITIAL_SIZE, mQueue.size());
+        mQueue.dequeue();
+        mQueue.enqueue(2);
+        mQueue.enqueue(2);
+    }
+
+    private final int TEST_INITIAL_SIZE = 10;
 
 }
